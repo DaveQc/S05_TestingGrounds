@@ -23,6 +23,12 @@ EBTNodeResult::Type UChooseNextWaypoint::ExecuteTask(UBehaviorTreeComponent& Own
 
 	// TODO Protect against empty patrol routes
 
+
+	//cycle the index 
+
+	auto nextIndex = (Index + 1) % PatrolPoints.Num();
+	BlackboardComp->SetValueAsInt(IndexKey.SelectedKeyName, nextIndex);
+
 	//UE_LOG(LogTemp, Warning, TEXT("Waypoint index : %i"), Index);
 
 	return EBTNodeResult::Succeeded;
